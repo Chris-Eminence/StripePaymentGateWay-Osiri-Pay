@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Osiri App</string>
+    <string name="welcome_to">Welcome To</string>
+    <string name="osiri_pay">Osiri Pay</string>
+    <string name="the_easiest_way">The easiest way to send money to Osiri</string>
+    <string name="pay">PAY</string>
+</resources>

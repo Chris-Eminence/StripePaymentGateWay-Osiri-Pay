@@ -3,6 +3,5 @@
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">10.0.2.2</domain>
-        <preference name="android-minSdkVersion" value="19"/>
     </domain-config>
 </network-security-config>

@@ -1,7 +1,6 @@
 package com.example.osiriapp;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,7 +8,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -47,20 +45,20 @@ public class CheckoutActivityJava extends AppCompatActivity {
     //10.0.2.2 is the Android emulator,s alias to localhost
     private static final String BACKEND_URL = "http://10.0.2.2:4242/";
 
-    private OkHttpClient httpClient = new OkHttpClient();
+    private final OkHttpClient httpClient = new OkHttpClient();
     private String paymentIntentClientSecret;
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    // @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
 
-        //Configure the SDK with your Stripe publishabeble key, so it can make request to Stripe
+        //Configure the SDK with your Stripe publishable key, so it can make request to Stripe
         Stripe stripe = new Stripe(
                 getApplicationContext(),
-                Objects.requireNonNull("pk_test_51I9yrXLUDt6XgiRs43wXHsTS6FDAtZngnsjbYlxIy701MzJyVbpXiApwqHLVzr18NIzlfs0nIuoMx4WPZVBQArvd00wZFJlw1h")
+                Objects.requireNonNull("pk_test_51IEfIWJeopeZj83SxvRnIcFtpz16vdmO9T86E2DZLqMSt79IwZiHHUSceNJoIPPQyKatAgUYmZyUUulSJLWk7EtY00RRGb14Gz")
 
         );
         startCheckout();
@@ -105,7 +103,7 @@ public class CheckoutActivityJava extends AppCompatActivity {
 
     }
 
-    final class PayCallback implements Callback, okhttp3.Callback {
+    static final class PayCallback implements Callback, okhttp3.Callback {
         @NonNull
         private final WeakReference<CheckoutActivityJava> activityRef;
 
@@ -126,7 +124,7 @@ public class CheckoutActivityJava extends AppCompatActivity {
                     ).show());
         }
 
-        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+        //  @RequiresApi(api = Build.VERSION_CODES.KITKAT)
         @Override
         public void onResponse(@NotNull okhttp3.Call call, @NotNull Response response)
                 throws IOException {
@@ -146,7 +144,7 @@ public class CheckoutActivityJava extends AppCompatActivity {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    // @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     void onPaymentSuccess(@NonNull final Response response) throws IOException {
         Gson gson = new Gson();
         Type type = new TypeToken<Map<String, String>>() {
@@ -175,7 +173,7 @@ public class CheckoutActivityJava extends AppCompatActivity {
             PaymentIntent paymentIntent = result.getIntent();
             PaymentIntent.Status status = paymentIntent.getStatus();
             if (status == PaymentIntent.Status.Succeeded) {
-                //payment completed sucessfully
+                //payment completed successfully
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 activity.displayAlert(
                         "Payment Completed",

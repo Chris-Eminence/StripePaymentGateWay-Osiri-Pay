@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".CheckoutActivityJava">
 
-    <com.stripe.android.view.CardNumberEditText
+    <com.stripe.android.view.CardInputWidget
         android:id="@+id/cardInputWidget"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +15,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
-    </com.stripe.android.view.CardNumberEditText>
+    </com.stripe.android.view.CardInputWidget>
 
     <Button
         android:id="@+id/payButton"

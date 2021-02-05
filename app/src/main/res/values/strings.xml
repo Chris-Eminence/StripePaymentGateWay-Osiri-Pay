@@ -4,4 +4,6 @@
     <string name="osiri_pay">Osiri Pay</string>
     <string name="the_easiest_way">The easiest way to send money to Osiri</string>
     <string name="pay">PAY</string>
+    <string name="enter_amount">Enter Amount to transfer</string>
+    <string name="done">Done</string>
 </resources>

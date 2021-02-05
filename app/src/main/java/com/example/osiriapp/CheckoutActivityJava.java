@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -46,11 +48,18 @@ public class CheckoutActivityJava extends AppCompatActivity {
     private OkHttpClient httpClient = new OkHttpClient();
     private String paymentIntentClientSecret;
     private Stripe stripe;
+    private EditText amountTextBox;
+    private TextView amountText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
+
+        amountTextBox = findViewById(R.id.amountTextBox);
+        amountText = findViewById(R.id.amountText);
+
+
         // Configure the SDK with your Stripe publishable key so it can make requests to Stripe
         stripe = new Stripe(
                 getApplicationContext(),
@@ -58,18 +67,29 @@ public class CheckoutActivityJava extends AppCompatActivity {
         );
         startCheckout();
     }
+
+
+    public void done(View view) {
+
+        String typedAmount = amountTextBox.getText().toString();
+        amountText.setText( typedAmount );
+
+    }
+
+
     private void startCheckout() {
         // Create a PaymentIntent by calling the server's endpoint.
         MediaType mediaType = MediaType.get("application/json; charset=utf-8");
 
-//        double amount = Double.valueOf(amountTextView.getText().toString()) * 100;
+        String amount = amountText.getText().toString();
+
 
         Map<String, Object> payMap = new HashMap<>();
         Map<String, Object> itemMap = new HashMap<>();
         List<Map<String, Object>> itemList = new ArrayList<>();
         payMap.put("currency", "usd"); //dont change currency in testing phase otherwise it won't work
         itemMap.put("id", "photo_subscription");
-//        itemMap.put("amount", amount);
+        itemMap.put("amount", amount);
         itemList.add(itemMap);
         payMap.put("items", itemList);
         String json = new Gson().toJson(payMap);
@@ -85,6 +105,14 @@ public class CheckoutActivityJava extends AppCompatActivity {
         // Hook up the pay button to the card widget and stripe instance
         Button payButton = findViewById(R.id.payButton);
         payButton.setOnClickListener((View view) -> {
+
+                    if(amountTextBox.equals("")){
+                        payButton.setEnabled(false);
+                        Toast.makeText(this, "Enter the amount first and click on DONE", Toast.LENGTH_LONG).show();
+                    } else {
+                        payButton.setEnabled(true);
+                    }
+
             CardInputWidget cardInputWidget = findViewById(R.id.cardInputWidget);
             PaymentMethodCreateParams params = cardInputWidget.getPaymentMethodCreateParams();
             if (params != null) {
@@ -117,6 +145,8 @@ public class CheckoutActivityJava extends AppCompatActivity {
         );
         paymentIntentClientSecret = responseMap.get("clientSecret");
     }
+
+
     private static final class PayCallback implements Callback {
         @NonNull private final WeakReference<CheckoutActivityJava> activityRef;
         PayCallback(@NonNull CheckoutActivityJava activity) {

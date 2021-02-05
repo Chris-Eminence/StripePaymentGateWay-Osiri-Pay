@@ -45,7 +45,7 @@ import okhttp3.Response;
 public class CheckoutActivityJava extends AppCompatActivity {
     // 10.0.2.2 is the Android emulator's alias to localhost
     private static final String BACKEND_URL = "https://glacial-basin-31426.herokuapp.com/";
-    private OkHttpClient httpClient = new OkHttpClient();
+    private final OkHttpClient httpClient = new OkHttpClient();
     private String paymentIntentClientSecret;
     private Stripe stripe;
     private EditText amountTextBox;

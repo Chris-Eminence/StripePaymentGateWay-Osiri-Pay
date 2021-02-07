@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 /* Create an Intent that will start the Menu-Activity. */
-                Intent mainIntent = new Intent(MainActivity.this, CheckoutActivityJava.class);
+                Intent mainIntent = new Intent(MainActivity.this, Payment.class);
                 MainActivity.this.startActivity(mainIntent);
                 MainActivity.this.finish();
             }

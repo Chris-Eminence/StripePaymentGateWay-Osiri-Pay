@@ -6,4 +6,6 @@
     <string name="pay">PAY</string>
     <string name="enter_amount">Enter Amount to transfer</string>
     <string name="done">Done</string>
+    <string name="_switch">Switch</string>
+    <string name="click_to_see">Click to see payment details</string>
 </resources>

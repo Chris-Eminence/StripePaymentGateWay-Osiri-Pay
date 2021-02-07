@@ -23,14 +23,14 @@ public class Payment extends AppCompatActivity {
 
     public void done(View view) {
 
-        String convertAmount = amountED.getText().toString();
-        double amountEd = Double.parseDouble(convertAmount);
 
-        double amountConversion = amountEd * 381.00;
 
         Intent intent = new Intent(Payment.this, CheckoutActivityJava.class);
 
+        String convertAmount = amountED.getText().toString();
+        double amountEd = Double.parseDouble(convertAmount);
 
+        amountConversion = amountEd * 381.00;
 
         amountInNumber = amountED.getText().toString() ;
         intent.putExtra("converted_amount", amountConversion);

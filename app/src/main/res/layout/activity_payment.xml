@@ -1,10 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF"
     tools:context=".Payment">
+
+    <ImageView
+        android:id="@+id/send_image"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/image_one"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/send_image"
+        app:layout_constraintBottom_toTopOf="@id/label">
+
+    <TextView
+        android:id="@+id/label_osiri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome to OSIRI PAY "
+        android:gravity="center"
+        android:textSize="40dp"
+        android:textColor="#22353C"
+        android:layout_marginHorizontal="20dp"
+        />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Faster way to send money to OSIRI"
+            android:textColor="#BC343E"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textStyle="italic"
+            android:layout_marginHorizontal="20dp"
+            />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_amount_"
+        android:textColor="#22353C"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/amountEditTextBox"/>
 
     <EditText
         android:id="@+id/amountEditTextBox"
@@ -13,7 +68,7 @@
         android:layout_margin="20dp"
         android:hint="@string/enter_amount"
         android:inputType="number"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/done_button"/>
 
@@ -23,12 +78,11 @@
         android:layout_height="wrap_content"
         android:text="@string/done"
         android:textColor="#BC343E"
-        android:layout_marginHorizontal="20dp"
         android:textStyle="bold"
         android:background="@drawable/_button_bg"
-        android:layout_marginTop="20dp"
+        android:layout_margin="20dp"
         android:onClick="done"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

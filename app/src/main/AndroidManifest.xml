@@ -11,8 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
-        <activity android:name=".Payment"></activity>
-        <activity android:name=".CheckoutActivityJava" />
+        <activity android:name=".Payment"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CheckoutActivityJava"
+            android:screenOrientation="portrait"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

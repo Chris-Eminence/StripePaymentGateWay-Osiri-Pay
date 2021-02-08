@@ -11,7 +11,7 @@ public class Payment extends AppCompatActivity {
 
     public EditText amountED;
     public String amountInNumber;
-    public double amountConversion;
+    public int naira = 381;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,21 +19,18 @@ public class Payment extends AppCompatActivity {
         setContentView(R.layout.activity_payment);
 
         amountED = findViewById(R.id.amountEditTextBox);
+
     }
 
     public void done(View view) {
 
+        int dollarAmount = Integer.parseInt(amountED.getText().toString());
 
+        int convert = dollarAmount * naira;
 
-        Intent intent = new Intent(Payment.this, CheckoutActivityJava.class);
-
-        String convertAmount = amountED.getText().toString();
-        double amountEd = Double.parseDouble(convertAmount);
-
-        amountConversion = amountEd * 381.00;
-
+        Intent intent = new Intent(getApplicationContext(), CheckoutActivityJava.class);
         amountInNumber = amountED.getText().toString() ;
-        intent.putExtra("converted_amount", amountConversion);
+        intent.putExtra("converted_amount", convert);
         intent.putExtra("amount_in", amountInNumber);
         startActivity(intent);
         finish();

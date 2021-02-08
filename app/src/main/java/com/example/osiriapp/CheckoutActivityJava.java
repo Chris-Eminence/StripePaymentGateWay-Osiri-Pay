@@ -55,6 +55,10 @@ public class CheckoutActivityJava extends AppCompatActivity {
     private ConstraintLayout details;
 
 
+//    int dollars = Integer.parseInt(amountText.getText().toString());
+//    int naira = 381;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +67,8 @@ public class CheckoutActivityJava extends AppCompatActivity {
         amountText = findViewById(R.id.amountText);
         convertedAmount = findViewById(R.id.convertedAmount);
         details = findViewById(R.id.details_layout);
+
+        amountText = findViewById(R.id.amountText);
 
 
 
@@ -75,13 +81,6 @@ public class CheckoutActivityJava extends AppCompatActivity {
     }
 
 
-//    public void done(View view) {
-//
-//        String typedAmount = amountTextBox.getText().toString();
-//        amountText.setText( typedAmount );
-//
-//    }
-
 
     private void startCheckout() {
         // Create a PaymentIntent by calling the server's endpoint.
@@ -89,9 +88,12 @@ public class CheckoutActivityJava extends AppCompatActivity {
 //        String amount = amountText.getText().toString() ;
 
 
+        Intent intent = getIntent();
 
-        String amountToNaira = getIntent().getExtras().getString("converted_amount");
-        convertedAmount.setText(amountToNaira);
+        int data = intent.getIntExtra("converted_amount", 0);
+
+        convertedAmount.setText(Integer.toString(data));
+
 
         String amount = getIntent().getExtras().getString("amount_in");
         amountText.setText(amount);
@@ -169,8 +171,6 @@ public class CheckoutActivityJava extends AppCompatActivity {
         }
     }
 
-
-
     private static final class PayCallback implements Callback {
         @NonNull private final WeakReference<CheckoutActivityJava> activityRef;
         PayCallback(@NonNull CheckoutActivityJava activity) {
@@ -244,5 +244,6 @@ public class CheckoutActivityJava extends AppCompatActivity {
             // Payment request failed – allow retrying using the same payment method
             activity.displayAlert("Error", e.toString());
         }
+
     }
 }

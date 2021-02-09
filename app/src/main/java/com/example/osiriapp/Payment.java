@@ -12,6 +12,7 @@ public class Payment extends AppCompatActivity {
     public EditText amountED;
     public String amountInNumber;
     public int naira = 381;
+//    public Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,7 @@ public class Payment extends AppCompatActivity {
         setContentView(R.layout.activity_payment);
 
         amountED = findViewById(R.id.amountEditTextBox);
+ //       button = findViewById(R.id.done_button);
 
     }
 
@@ -34,6 +36,11 @@ public class Payment extends AppCompatActivity {
         intent.putExtra("amount_in", amountInNumber);
         startActivity(intent);
         finish();
-
     }
 }
+
+
+
+
+
+

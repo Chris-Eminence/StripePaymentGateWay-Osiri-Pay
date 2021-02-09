@@ -75,7 +75,7 @@ public class CheckoutActivityJava extends AppCompatActivity {
         // Configure the SDK with your Stripe publishable key so it can make requests to Stripe
         stripe = new Stripe(
                 getApplicationContext(),
-                Objects.requireNonNull("pk_test_51IEfIWJeopeZj83SxvRnIcFtpz16vdmO9T86E2DZLqMSt79IwZiHHUSceNJoIPPQyKatAgUYmZyUUulSJLWk7EtY00RRGb14Gz")
+                Objects.requireNonNull("pk_live_51I9yrXLUDt6XgiRsUTcMK3ifvAwguzBAWoAzCR2TOjlHtNsnyMtXiZRWLBSI2iNEotshph8bebBPSHK4WlYHE6Qb00KleTDbKw")
         );
         startCheckout();
     }

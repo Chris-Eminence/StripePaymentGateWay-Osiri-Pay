@@ -46,7 +46,7 @@ import okhttp3.Response;
 public class CheckoutActivityJava extends AppCompatActivity {
     // 10.0.2.2 is the Android emulator's alias to localhost
 //    private static final String BACKEND_URL = "https://rokuappglacial-basin-31426.he.com/";
-    private static final String BACKEND_URL = "https://safe-badlands-28596.herokuapp.com/";
+    private static final String BACKEND_URL = "https://mysterious-everglades-49760.herokuapp.com/";
     private final OkHttpClient httpClient = new OkHttpClient();
     private String paymentIntentClientSecret;
     private Stripe stripe;
@@ -225,8 +225,7 @@ public class CheckoutActivityJava extends AppCompatActivity {
                 // Payment completed successfully
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 activity.displayAlert(
-                        "Payment completed",
-                        gson.toJson(paymentIntent)
+                        "Payment completed", "Payment Successful!!!\\nThank You for using Osiri Pay"
                 );
             } else if (status == PaymentIntent.Status.RequiresPaymentMethod) {
                 // Payment failed – allow retrying using a different payment method

@@ -55,6 +55,7 @@
         android:id="@+id/label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:text="@string/enter_amount_"
         android:textColor="#22353C"
         android:layout_marginHorizontal="20dp"
@@ -74,7 +75,7 @@
 
     <Button
         android:id="@+id/done_button"
-        android:layout_width="0dp"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:text="@string/done"
         android:textColor="#BC343E"
@@ -82,6 +83,7 @@
         android:onClick="done"
         android:background="@drawable/_button_bg"
         android:layout_margin="20dp"
+        app:layout_constraintLeft_toRightOf="@id/amountEditTextBox"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
